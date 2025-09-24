@@ -3,6 +3,7 @@ export const initialState = {
   results: [],
   error: null,
   favorites: JSON.parse(localStorage.getItem("favorites")) || [],
+  darkMode: JSON.parse(localStorage.getItem("darkMode")) ?? false,
 };
 
 export function reducer(state, action) {
@@ -37,6 +38,12 @@ export function reducer(state, action) {
     case "CLEAR_FAVORITES":
       localStorage.removeItem("favorites");
       return { ...state, favorites: [] };
+
+    case "TOGGLE_THEME": {
+      const newMode = !state.darkMode;
+      localStorage.setItem("darkMode", JSON.stringify(newMode));
+      return { ...state, darkMode: newMode };
+    }
 
     default:
       return state;

@@ -4,16 +4,41 @@ import { AnimeList } from "./AnimeList";
 import { ErrorBanner } from "./ErrorBanner";
 import { useContext } from "react";
 import { AppContext } from "../contexts/AppProvider";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
+import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
 
 export function App() {
   const { state } = useContext(AppContext);
 
+  const theme = createTheme({
+    palette: {
+      mode: state.darkMode ? "dark" : "light",
+      primary: { main: "#1976d2" },
+      secondary: { main: "#9c27b0" },
+    },
+  });
+
   return (
-    <div style={{ fontFamily: "sans-serif", padding: "1rem" }}>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Header />
-      <SearchBar />
-      {state.error && <ErrorBanner message={state.error} />}
-      <AnimeList />
-    </div>
+      <Container maxWidth="lg">
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            mt: 3,
+            mb: 3,
+            gap: 2,
+          }}
+        >
+          <SearchBar />
+          {state.error && <ErrorBanner message={state.error} />}
+          <AnimeList />
+        </Box>
+      </Container>
+    </ThemeProvider>
   );
 }
