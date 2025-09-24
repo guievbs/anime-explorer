@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../contexts/AppProvider";
 import { AnimeCard } from "./AnimeCard";
+import Grid from "@mui/material/Grid";
 
 export function AnimeList() {
   const { state, dispatch } = useContext(AppContext);
@@ -10,7 +11,7 @@ export function AnimeList() {
     if (!state.query) return;
     setLoading(true);
 
-    fetch(`https://api.jikan.moe/v4/anime?q=${state.query}&limit=6`)
+    fetch(`https://api.jikan.moe/v4/anime?q=${state.query}&limit=12`)
       .then((r) => r.json())
       .then((data) => {
         dispatch({ type: "SET_RESULTS", payload: data.data || [] });
@@ -25,10 +26,12 @@ export function AnimeList() {
   if (!state.results.length) return <p>Nenhum anime encontrado</p>;
 
   return (
-    <div style={{ display: "grid", gap: "1rem", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))" }}>
+    <Grid container spacing={3}>
       {state.results.map((anime) => (
-        <AnimeCard key={anime.mal_id} anime={anime} />
+        <Grid item xs={12} sm={6} md={4} lg={3} key={anime.mal_id}>
+          <AnimeCard anime={anime} />
+        </Grid>
       ))}
-    </div>
+    </Grid>
   );
 }

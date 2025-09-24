@@ -2,7 +2,7 @@ export const initialState = {
   query: "",
   results: [],
   error: null,
-  favorites: JSON.parse(localStorage.getItem("favorites")) || [], // carrega do localStorage
+  favorites: JSON.parse(localStorage.getItem("favorites")) || [],
 };
 
 export function reducer(state, action) {
@@ -27,6 +27,16 @@ export function reducer(state, action) {
       localStorage.setItem("favorites", JSON.stringify(updated));
       return { ...state, favorites: updated };
     }
+
+    case "REMOVE_FAVORITE": {
+      const updated = state.favorites.filter((a) => a.mal_id !== action.payload);
+      localStorage.setItem("favorites", JSON.stringify(updated));
+      return { ...state, favorites: updated };
+    }
+
+    case "CLEAR_FAVORITES":
+      localStorage.removeItem("favorites");
+      return { ...state, favorites: [] };
 
     default:
       return state;
