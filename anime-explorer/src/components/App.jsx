@@ -2,6 +2,7 @@ import { Header } from "./Header";
 import { SearchBar } from "./SearchBar";
 import { AnimeList } from "./AnimeList";
 import { ErrorBanner } from "./ErrorBanner";
+import { Footer } from "./Footer"; // <- import
 import { useContext } from "react";
 import { AppContext } from "../contexts/AppProvider";
 import Container from "@mui/material/Container";
@@ -34,12 +35,12 @@ export function App() {
             mt: 5,
             mb: 3,
             gap: 3,
+            minHeight: "70vh", // empurra o rodapé para baixo
           }}
         >
           <SearchBar />
           {state.error && <ErrorBanner message={state.error} />}
 
-          {/* Página inicial de boas-vindas */}
           {!state.query ? (
             <motion.div
               initial={{ opacity: 0, y: 40 }}
@@ -60,6 +61,7 @@ export function App() {
           )}
         </Box>
       </Container>
+      <Footer /> 
     </ThemeProvider>
   );
 }
