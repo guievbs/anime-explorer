@@ -6,7 +6,9 @@ import { useContext } from "react";
 import { AppContext } from "../contexts/AppProvider";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
+import { motion } from "framer-motion";
 
 export function App() {
   const { state } = useContext(AppContext);
@@ -29,14 +31,33 @@ export function App() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            mt: 3,
+            mt: 5,
             mb: 3,
-            gap: 2,
+            gap: 3,
           }}
         >
           <SearchBar />
           {state.error && <ErrorBanner message={state.error} />}
-          <AnimeList />
+
+          {/* Página inicial de boas-vindas */}
+          {!state.query ? (
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              style={{ textAlign: "center", marginTop: "3rem" }}
+            >
+              <Typography variant="h3" gutterBottom>
+                Bem-vindo ao Anime Explorer 🎌
+              </Typography>
+              <Typography variant="h6" color="text.secondary">
+                Busque por seus animes favoritos, veja detalhes e monte sua
+                lista personalizada!
+              </Typography>
+            </motion.div>
+          ) : (
+            <AnimeList />
+          )}
         </Box>
       </Container>
     </ThemeProvider>

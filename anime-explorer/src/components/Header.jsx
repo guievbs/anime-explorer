@@ -45,7 +45,16 @@ export function Header() {
         anchor="right"
         open={open}
         onClose={() => setOpen(false)}
-        slotProps={{ paper: { sx: { width: { xs: "80%", sm: "400px" } } } }}
+        PaperProps={{
+          sx: {
+            width: {
+              xs: "100%", // celular ocupa toda tela
+              sm: "100%", // tablet pequeno também
+              md: "70%",  // médio ocupa 70%
+              lg: "50%",  // desktop ocupa metade
+            },
+          },
+        }}
       >
         <FavoritesPanel />
       </Drawer>
