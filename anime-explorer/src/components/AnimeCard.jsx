@@ -20,18 +20,48 @@ export function AnimeCard({ anime }) {
 
   return (
     <>
-      <Card sx={{ maxWidth: 280, margin: "auto", cursor: "pointer" }}>
+      <Card
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          flexGrow: 1,
+        }}
+      >
         <CardMedia
           component="img"
-          height="380"
+          height="280"
           image={anime.images.jpg.image_url}
           alt={anime.title}
           onClick={() => setOpen(true)}
+          sx={{ cursor: "pointer" }}
         />
-        <CardContent onClick={() => setOpen(true)}>
-          <Typography gutterBottom variant="h6" component="div" noWrap>
+
+        <CardContent
+          onClick={() => setOpen(true)}
+          sx={{
+            flexGrow: 1,
+            cursor: "pointer",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+          }}
+        >
+          <Typography
+            gutterBottom
+            variant="h6"
+            component="div"
+            sx={{
+              display: "-webkit-box",
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: "vertical",
+              overflow: "hidden",
+              textOverflow: "ellipsis",
+              minHeight: "3rem",
+            }}
+          >
             {anime.title}
           </Typography>
+
           <Typography variant="body2" color="text.secondary">
             Nota: {anime.score || "N/A"}
           </Typography>
@@ -42,7 +72,8 @@ export function AnimeCard({ anime }) {
             Temporada: {anime.season ? `${anime.season} ${anime.year}` : "N/A"}
           </Typography>
         </CardContent>
-        <CardActions>
+
+        <CardActions sx={{ justifyContent: "center" }}>
           <Button
             variant={isFavorite ? "outlined" : "contained"}
             color={isFavorite ? "error" : "primary"}

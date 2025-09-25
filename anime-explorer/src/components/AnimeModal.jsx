@@ -60,13 +60,13 @@ export function AnimeModal({ open, onClose, animeId }) {
             />
 
             <DialogContentText>
-              <strong>Nota:</strong> {anime.score || "N/A"} <br />
-              <strong>Tipo:</strong> {anime.type || "N/A"} <br />
+              <strong>Nota:</strong> {anime.score || " "} <br />
+              <strong>Tipo:</strong> {anime.type || " "} <br />
               <strong>Temporada:</strong>{" "}
-              {anime.season ? `${anime.season} ${anime.year}` : "N/A"} <br />
+              {anime.season ? `${anime.season} ${anime.year}` : " "} <br />
               <strong>Episódios:</strong> {anime.episodes || "?"} <br />
               <strong>Estúdio:</strong>{" "}
-              {anime.studios?.map((s) => s.name).join(", ") || "N/A"}
+              {anime.studios?.map((s) => s.name).join(", ") || " "}
             </DialogContentText>
 
             <Typography
@@ -75,24 +75,6 @@ export function AnimeModal({ open, onClose, animeId }) {
             >
               {anime.synopsis || "Sinopse não disponível para este anime."}
             </Typography>
-
-            {anime.trailer?.embed_url ? (
-              <div style={{ marginTop: "1rem" }}>
-                <Typography variant="h6">Trailer</Typography>
-                <iframe
-                  width="100%"
-                  height="315"
-                  src={anime.trailer.embed_url}
-                  title="Trailer"
-                  frameBorder="0"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            ) : (
-              <Typography sx={{ marginTop: "1rem" }} color="text.secondary">
-                Trailer não disponível para este anime.
-              </Typography>
-            )}
           </>
         )}
       </DialogContent>
