@@ -15,6 +15,22 @@ export function SearchBar() {
     dispatch({ type: "SET_QUERY", payload: query });
   };
 
+  const handleRandom = async () => {
+    dispatch({ type: "SET_ERROR", payload: null });
+
+    try {
+      const res = await fetch("https://api.jikan.moe/v4/random/anime");
+      if (!res.ok) throw new Error("Erro na API");
+      const data = await res.json();
+      dispatch({ type: "SET_RANDOM", payload: data.data });
+    } catch (err) {
+      dispatch({
+        type: "SET_ERROR",
+        payload: "Não foi possível buscar um anime aleatório",
+      });
+    }
+  };
+
   return (
     <div style={{ display: "flex", gap: "0.5rem", marginBottom: "1rem" }}>
       <TextField
@@ -26,6 +42,9 @@ export function SearchBar() {
       />
       <Button variant="contained" onClick={handleSearch}>
         Buscar
+      </Button>
+      <Button variant="outlined" color="secondary" onClick={handleRandom}>
+        Aleatório
       </Button>
     </div>
   );

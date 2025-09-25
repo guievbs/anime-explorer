@@ -51,6 +51,14 @@ export function reducer(state, action) {
       return { ...state, darkMode: newMode };
     }
 
+    case "SET_RANDOM":
+      return {
+        ...state,
+        results: [action.payload],
+        query: "random",
+        error: null,
+      };
+
     case "RESET_SEARCH":
       return { ...state, query: "", results: [], error: null };
 
