@@ -18,10 +18,14 @@ export function reducer(state, action) {
       return { ...state, error: action.payload };
 
     case "TOGGLE_FAVORITE": {
-      const exists = state.favorites.find((a) => a.mal_id === action.payload.mal_id);
+      const exists = state.favorites.find(
+        (a) => a.mal_id === action.payload.mal_id
+      );
       let updated;
       if (exists) {
-        updated = state.favorites.filter((a) => a.mal_id !== action.payload.mal_id);
+        updated = state.favorites.filter(
+          (a) => a.mal_id !== action.payload.mal_id
+        );
       } else {
         updated = [...state.favorites, action.payload];
       }
@@ -30,7 +34,9 @@ export function reducer(state, action) {
     }
 
     case "REMOVE_FAVORITE": {
-      const updated = state.favorites.filter((a) => a.mal_id !== action.payload);
+      const updated = state.favorites.filter(
+        (a) => a.mal_id !== action.payload
+      );
       localStorage.setItem("favorites", JSON.stringify(updated));
       return { ...state, favorites: updated };
     }
@@ -44,6 +50,9 @@ export function reducer(state, action) {
       localStorage.setItem("darkMode", JSON.stringify(newMode));
       return { ...state, darkMode: newMode };
     }
+
+    case "RESET_SEARCH":
+      return { ...state, query: "", results: [], error: null };
 
     default:
       return state;

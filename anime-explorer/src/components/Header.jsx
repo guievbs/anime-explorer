@@ -8,6 +8,7 @@ import Drawer from "@mui/material/Drawer";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Brightness4Icon from "@mui/icons-material/Brightness4";
 import Brightness7Icon from "@mui/icons-material/Brightness7";
+import HomeIcon from "@mui/icons-material/Home";
 import { FavoritesPanel } from "./FavoritesPanel";
 import { AppContext } from "../contexts/AppProvider";
 
@@ -19,11 +20,25 @@ export function Header() {
     <>
       <AppBar position="static" color="primary">
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-          <Typography variant="h6" component="div">
+          {/* Botão Home */}
+          <IconButton
+            edge="start"
+            color="inherit"
+            onClick={() => dispatch({ type: "RESET_SEARCH" })}
+          >
+            <HomeIcon />
+          </IconButton>
+
+          <Typography
+            variant="h6"
+            component="div"
+            sx={{ flexGrow: 1, textAlign: "center" }}
+          >
             Anime Explorer
           </Typography>
 
           <div>
+            {/* Toggle Dark Mode */}
             <IconButton
               sx={{ mr: 2 }}
               color="inherit"
@@ -32,6 +47,7 @@ export function Header() {
               {state.darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
             </IconButton>
 
+            {/* Drawer Favoritos */}
             <IconButton color="inherit" onClick={() => setOpen(true)}>
               <Badge badgeContent={state.favorites.length} color="error">
                 <FavoriteIcon />
@@ -48,10 +64,10 @@ export function Header() {
         PaperProps={{
           sx: {
             width: {
-              xs: "100%", // celular ocupa toda tela
-              sm: "100%", // tablet pequeno também
-              md: "70%",  // médio ocupa 70%
-              lg: "50%",  // desktop ocupa metade
+              xs: "100%",
+              sm: "100%",
+              md: "70%",
+              lg: "50%",
             },
           },
         }}
