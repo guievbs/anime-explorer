@@ -13,7 +13,7 @@ export function AnimeList() {
     if (!state.query) return;
     setLoading(true);
 
-    fetch(`https://api.jikan.moe/v4/anime?q=${state.query}&limit=20`)
+    fetch(`https://api.jikan.moe/v4/anime?q=${state.query}&limit=20&sfw=true`)
       .then((r) => r.json())
       .then((data) => {
         const filtered = filterResults(data.data || [], state.query);

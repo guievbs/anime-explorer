@@ -71,6 +71,9 @@ export function AnimeCard({ anime }) {
           <Typography variant="body2" color="text.secondary">
             Temporada: {anime.season ? `${anime.season} ${anime.year}` : "N/A"}
           </Typography>
+          <Typography variant="body2" color="text.secondary">
+            Classificação: {anime.rating || "N/A"}
+          </Typography>
         </CardContent>
 
         <CardActions sx={{ justifyContent: "center" }}>

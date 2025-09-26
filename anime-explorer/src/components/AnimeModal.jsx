@@ -66,13 +66,15 @@ export function AnimeModal({ open, onClose, animeId }) {
               {anime.season ? `${anime.season} ${anime.year}` : " "} <br />
               <strong>Episódios:</strong> {anime.episodes || "?"} <br />
               <strong>Estúdio:</strong>{" "}
-              {anime.studios?.map((s) => s.name).join(", ") || " "}
+              {anime.studios?.map((s) => s.name).join(", ") || " "} <br />
+              <strong>Classificação:</strong> {anime.rating || "N/A"}
             </DialogContentText>
 
             <Typography
               variant="body1"
               sx={{ marginTop: "1rem", clear: "both" }}
             >
+              <br />
               {anime.synopsis || "Sinopse não disponível para este anime."}
             </Typography>
           </>

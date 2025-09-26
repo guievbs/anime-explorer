@@ -19,7 +19,7 @@ export function SearchBar() {
     dispatch({ type: "SET_ERROR", payload: null });
 
     try {
-      const res = await fetch("https://api.jikan.moe/v4/random/anime");
+      const res = await fetch("https://api.jikan.moe/v4/random/anime?sfw=true");
       if (!res.ok) throw new Error("Erro na API");
       const data = await res.json();
       dispatch({ type: "SET_RANDOM", payload: data.data });
