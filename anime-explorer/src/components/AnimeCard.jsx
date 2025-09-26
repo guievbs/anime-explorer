@@ -22,20 +22,28 @@ export function AnimeCard({ anime }) {
     <>
       <Card
         sx={{
+          width: 280, // largura fixa
+          height: 480, // altura fixa
           display: "flex",
           flexDirection: "column",
-          flexGrow: 1,
+          justifyContent: "space-between",
+          margin: "0 auto", // centraliza
         }}
       >
+        {/* Imagem com tamanho fixo */}
         <CardMedia
           component="img"
-          height="280"
           image={anime.images.jpg.image_url}
           alt={anime.title}
           onClick={() => setOpen(true)}
-          sx={{ cursor: "pointer" }}
+          sx={{
+            height: 200, // área da imagem fixa
+            objectFit: "cover", // corta sem distorcer
+            cursor: "pointer",
+          }}
         />
 
+        {/* Conteúdo fixo */}
         <CardContent
           onClick={() => setOpen(true)}
           sx={{
@@ -44,6 +52,7 @@ export function AnimeCard({ anime }) {
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-start",
+            paddingBottom: 1,
           }}
         >
           <Typography
