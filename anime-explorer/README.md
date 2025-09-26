@@ -1,16 +1,95 @@
-# React + Vite
+# 🎌 Anime Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Uma aplicação **SPA (Single Page Application)** desenvolvida em **React.js** que consome a **Jikan API** para explorar animes.  
+O projeto permite pesquisar animes, visualizar detalhes em modais, favoritar e remover títulos, além de buscar animes aleatórios.  
+O design é minimalista e moderno, totalmente **responsivo** e pronto para deploy na **Vercel**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Funcionalidades
 
-## React Compiler
+- 🔍 **Busca de Animes**: pesquisa por título usando a [Jikan API](https://docs.api.jikan.moe/).  
+- 🎲 **Anime Aleatório**: botão que retorna um anime aleatório (sem hentais).  
+- ⭐ **Favoritos**: adicionar/remover animes da lista de favoritos, armazenados em `context`.  
+- ❌ **Exclusão individual** de favoritos.  
+- 🖼️ **Cards responsivos e fixos**: largura e altura padronizadas para manter layout consistente.  
+- 📑 **Detalhes no Modal**: título, nota, tipo, temporada, estúdios, episódios e classificação indicativa.  
+- 🌗 **Tema Claro/Escuro**: toggle entre light/dark mode com **Material UI**.  
+- 🏠 **Voltar ao início**: botão Home para resetar a busca.  
+- 🚫 **Filtro SFW**: exclui hentais (Rx), mantendo animes +18 sérios (R, R+).  
+- 📱 **Design Responsivo**: grid com 1, 2 ou 3 cards por linha (dependendo da tela).  
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologias Utilizadas
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React.js** (com **Hooks**: `useState`, `useEffect`, `useContext`, `useReducer`)  
+- **Material UI (MUI)** → componentes de UI prontos, responsivos e acessíveis  
+- **Framer Motion** → animações suaves na renderização dos cards  
+- **Vite** → bundler rápido para desenvolvimento React  
+- **Jikan API** → dados de animes (open source, baseada no MyAnimeList)  
+
+---
+
+## 📂 Estrutura do Projeto
+
+```
+src/
+ ├── components/     # Componentes React (Header, Footer, AnimeCard, Modal, etc.)
+ ├── contexts/       # Context API + Reducer para estado global
+ ├── App.jsx         # Componente principal
+ └── main.jsx        # Ponto de entrada
+```
+
+---
+
+## ⚙️ Como Rodar Localmente
+
+1. **Clonar o repositório**
+   ```bash
+   git clone https://github.com/seu-usuario/anime-explorer.git
+   cd anime-explorer
+   ```
+
+2. **Instalar dependências**
+   ```bash
+   npm install
+   ```
+
+3. **Rodar em ambiente de desenvolvimento**
+   ```bash
+   npm run dev
+   ```
+
+4. Acesse no navegador:
+   ```
+   http://localhost:5173
+   ```
+
+---
+
+## 🌐 Deploy na Vercel
+
+1. Faça login em [Vercel](https://vercel.com/).  
+2. Clique em **"New Project"**.  
+3. Importe o repositório do GitHub.  
+4. A Vercel detecta automaticamente que é um projeto React + Vite.  
+5. Use as configurações padrão e clique em **Deploy**.  
+6. Em poucos segundos seu app estará disponível em uma URL do tipo:  
+   ```
+   https://anime-explorer.vercel.app
+   ```
+
+---
+
+## ✨ Futuras Melhorias
+
+- 🔄 Paginação ou **scroll infinito** para listas grandes.  
+- 🔎 Filtros avançados (gêneros, ano de lançamento).  
+- 📱 PWA (instalável como aplicativo mobile).  
+
+---
+
+## 📜 Licença
+
+Este projeto é open-source e pode ser usado livremente para estudos e melhorias.  
