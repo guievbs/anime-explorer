@@ -2,7 +2,7 @@
 
 Uma aplicação **SPA (Single Page Application)** desenvolvida em **React.js** que consome a **Jikan API** para explorar animes.  
 O projeto permite pesquisar animes, visualizar detalhes em modais, favoritar e remover títulos, além de buscar animes aleatórios.  
-O design é minimalista e moderno, totalmente **responsivo** e pronto para deploy na **Vercel**.
+O design é minimalista e moderno, totalmente **responsivo** e com deploy na **Vercel**.
 
 ---
 
@@ -69,25 +69,9 @@ src/
 ---
 
 ## 🌐 Deploy na Vercel
-
-1. Faça login em [Vercel](https://vercel.com/).  
-2. Clique em **"New Project"**.  
-3. Importe o repositório do GitHub.  
-4. A Vercel detecta automaticamente que é um projeto React + Vite.  
-5. Use as configurações padrão e clique em **Deploy**.  
-6. Em poucos segundos seu app estará disponível em uma URL do tipo:  
-   ```
-   https://anime-explorer.vercel.app
-   ```
-
----
-
-## ✨ Futuras Melhorias
-
-- 🔄 Paginação ou **scroll infinito** para listas grandes.  
-- 🔎 Filtros avançados (gêneros, ano de lançamento).  
-- 📱 PWA (instalável como aplicativo mobile).  
-
+  
+  ### [Link do Site](https://gs-anime-explorer.vercel.app/)
+   
 ---
 
 ## 📜 Licença
